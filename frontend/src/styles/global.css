@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0; 
+  width: 100vw !important;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-columns: 8rem auto;
+  height: 100vh;
+  /* Or grid-template-columns: config('width.24') auto; */
+}

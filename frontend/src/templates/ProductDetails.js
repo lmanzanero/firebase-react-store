@@ -1,13 +1,13 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layouts/layout'
 
 export default function ProductDetails({ data }) {  
   const product = data.allRestApiApiProducts.edges[0].node; 
   return (
     <Layout> 
-      <div className="grid grid-cols-2 gap-4">
-          <div class="flex-none  relative">
+      <div className="grid grid-cols-2 gap-4 m-8">
+          <div class="flex-none relative">
             <img src={product.image.high} alt="" class="absolute inset-0 w-full h-full object-cover" />
           </div>
           <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -23,7 +23,7 @@ export default function ProductDetails({ data }) {
                 <dl>
                   <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
-                      Full name
+                      Product Name
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       Margot Foster
@@ -31,73 +31,58 @@ export default function ProductDetails({ data }) {
                   </div>
                   <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
-                      Application for
+                      Price
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      Backend Developer
+                       $120,000
                     </dd>
                   </div>
                   <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
-                      Email address
+                      In Stock
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      margotfoster@example.com
+                      20
                     </dd>
                   </div>
                   <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
-                      Salary expectation
+                      Waranty
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      $120,000
+                      6 months
                     </dd>
                   </div>
                   <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt className="text-sm font-medium text-gray-500">
-                      About
+                      Description
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                       Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
                     </dd>
                   </div>
                   <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Attachments
-                    </dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                      <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                        <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                          <div className="w-0 flex-1 flex items-center"> 
-                            <svg className="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                              <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span className="ml-2 flex-1 w-0 truncate">
-                              resume_back_end_developer.pdf
-                            </span>
-                          </div>
-                          <div className="ml-4 flex-shrink-0">
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                              Download
-                            </a>
-                          </div>
-                        </li>
-                        <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                          <div className="w-0 flex-1 flex items-center"> 
-                            <svg className="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                              <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span className="ml-2 flex-1 w-0 truncate">
-                              coverletter_back_end_developer.pdf
-                            </span>
-                          </div>
-                          <div className="ml-4 flex-shrink-0">
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                              Download
-                            </a>
-                          </div>
-                        </li>
-                      </ul>
+                    <div className="flex space-x-3 mb-4 text-sm font-semibold">
+                      <div className="flex-auto flex space-x-3">
+                        <Link to={`/cart`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</Link>
+                        <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
+                      </div>
+                      <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">
+                        <svg width="20" height="20" fill="currentColor">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                        </svg>
+                      </button>
+                      <div class="rounded-full bg-yellow-100 text-amber-900 px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1">
+                        <dt className="text-amber-500">
+                          <span className="sr-only">Rating</span>
+                          <svg width="16" height="20" fill="currentColor">
+                            <path d="M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118L.98 9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0 00.95-.69L7.05 3.69z" />
+                          </svg>
+                        </dt>
+                        <dd>5</dd>
+                      </div>
+                    </div>
                     </dd>
                   </div>
                 </dl>

@@ -3,9 +3,9 @@ import React from 'react'
 
 export default function Product({ data }) {    
   return (
-    <div className="flex p-6 bg-gray-100 m-2">
-        <div className="flex-none w-44 relative">
-          <img src={data.image.high} alt="" className="absolute inset-0 w-full h-full object-cover rounded-lg" />
+    <div className="flex flex-col bg-gray-100 overflow-hidden rounded-lg m-2">
+        <div className="flex-none h-48 w-full relative ">
+          <img src={data.image.high} alt="" className="absolute inset-0 w-full h-full object-cover" />
         </div>
         <div className="flex-auto pl-6">
           <div className="flex flex-wrap items-baseline">
@@ -27,7 +27,7 @@ export default function Product({ data }) {
             </div> 
             <div className="ml-3 text-sm text-gray-500 underline">Size Guide</div>
             </div>
-            <div className="flex space-x-3 mb-4 text-sm font-semibold">
+            <div className="flex pb-4 space-x-3 text-sm font-semibold">
               <div className="flex-auto flex space-x-3">
                 <Link to={`/product/${data.slug}`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</Link>
                 <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
@@ -37,10 +37,10 @@ export default function Product({ data }) {
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
                 </svg>
               </button>
-          </div>
-          <p className="text-sm text-gray-500">
+            </div>
+          {/* <p className="text-sm text-gray-500">
             Free shipping on all continental US orders.
-          </p>
+          </p> */}
         </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/layouts/layout'
 
 export default function ProductDetails({ data }) {  
   const product = data.allRestApiApiProducts.edges[0].node; 

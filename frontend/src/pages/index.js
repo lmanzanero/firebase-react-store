@@ -3,7 +3,7 @@ import { Router } from "@reach/router"
 import PrivateRoute from "../components/PrivateRoute"
 import Dashboard from '../components/dashboard'
 import Login from './login'
-import Layout from "../components/layout"
+import Layout from "../components/layouts/layout"
 import '../styles/global.css'
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, StaticQuery } from "gatsby"
-import Layout from '../components/layout'
+import Layout from '../components/layouts/layout'
 import Product from '../components/product/product'
 
 export default function Shop() {  

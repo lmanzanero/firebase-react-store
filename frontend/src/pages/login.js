@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { navigate } from "gatsby"
-import Layout from '../components/layout'
+import Layout from '../components/layouts/layout'
 import { setUser } from '../services/auth' 
  
 export default function Login() {

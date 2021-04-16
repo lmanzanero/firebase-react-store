@@ -11,9 +11,7 @@ import Cart from "./cart"
 const App = () => (
   <div>  
     <Router basepath="/app"> 
-      <PrivateRoute path="/dashboard" component={Dashboard} />
-      <Product path="/products/:id" component={ProductDetails} />
-      <Cart path="/cart" component={Cart}/>
+      <PrivateRoute path="/dashboard" component={Dashboard} /> 
       <Login path="/login" /> 
       <IndexPage path="/" />
     </Router>

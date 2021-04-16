@@ -1,4 +1,4 @@
-import { Link } from '@reach/router'
+import { Link } from 'gatsby'
 import React from 'react'
 import { logout } from '../services/auth'
 

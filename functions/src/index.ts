@@ -18,7 +18,7 @@ app.delete('/product/:id', authMiddleware, deleteProudctById);
 
 //orders routes
 app.get('/orders', getAllOrders);
-app.post('/order', authMiddleware, createOrder);
+app.post('/order', createOrder);
 app.get('/order/:id', getOrderById);
 app.patch('/order/:id', authMiddleware, updateOrderById);
 app.delete('/order/:id', authMiddleware, deleteOrderById);

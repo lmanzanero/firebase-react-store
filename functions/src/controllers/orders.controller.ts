@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-// import { db } from  '../config/firebase';
+import { db } from  '../config/firebase';
 
 
 const getAllOrders = async (req: Request, res: Response ) => {
@@ -7,7 +7,9 @@ const getAllOrders = async (req: Request, res: Response ) => {
 }
 
 const createOrder = async (req: Request, res: Response ) => {
-  res.send("Creating one order");
+  const order: Order = req.body;
+  await db.collection('orders').add(order);
+  res.status(201).json(order); 
 }
 
 const getOrderById = async (req: Request, res: Response ) => {

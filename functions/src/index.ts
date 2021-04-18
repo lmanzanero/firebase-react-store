@@ -4,6 +4,8 @@ import { createProudct, deleteProudctById, getAllProudcts, getProudctById, updat
 import { createOrder, getAllOrders, getOrderById, updateOrderById, deleteOrderById } from "./controllers/orders.controller";
 // import * as cors from 'cors'; 
 import authMiddleware from './middleware/authMiddleware'
+import { verifyPhone } from "./controllers/auth.controller";
+import phoneVerificatonMiddleware from "./middleware/phoneVerifcationMiddleware";
 // import { loginUser } from "./controllers/auth.controller";
 
  
@@ -18,13 +20,15 @@ app.delete('/product/:id', authMiddleware, deleteProudctById);
 
 //orders routes
 app.get('/orders', getAllOrders);
-app.post('/order', createOrder);
+app.post('/order', phoneVerificatonMiddleware, createOrder);
 app.get('/order/:id', getOrderById);
 app.patch('/order/:id', authMiddleware, updateOrderById);
 app.delete('/order/:id', authMiddleware, deleteOrderById);
 
 
 // app.post('/auth', loginUser);
+//auth
+app.post('/verify', verifyPhone)
 
 app.get('/', async (req, res) => {
   res.status(200).send("API IS LIVE");

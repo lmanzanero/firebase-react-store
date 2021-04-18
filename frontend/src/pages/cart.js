@@ -4,8 +4,7 @@ import { navigate } from "gatsby"
 import Layout from '../components/layouts/layout'
 import CartProduct from '../components/cart/CartProduct'; 
 
-export default function Cart({ data, location }) {  
-  console.log(data);
+export default function Cart({ data, location }) {   
   const productId = location.state.productId; 
   const initalState = {
     productId: productId,
@@ -26,25 +25,25 @@ export default function Cart({ data, location }) {
      } else {
        setCanSubmit(false);
      } 
-     console.log(error);
+     console.log(orderDetails);
   }, [orderDetails])
 
   const handleOrder = async () => {
     setLoading(true);
     //send state values to api
     const requestOptions = {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+      method: 'POST', 
+      headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
         "productId": `${orderDetails.productId}`,
         "name": `${orderDetails.name}`,
         "phone": `${orderDetails.phone}`, 
       })
   };
-    await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/orders`, requestOptions)
+    await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/order`, requestOptions)
         .then(response => response.json())
         .then(data => {
+          console.log(data);
           if(data.error) { 
             setError(data.error)
           } else { 
@@ -71,7 +70,7 @@ export default function Cart({ data, location }) {
                   <h2 class="font-semibold text-2xl">3 Items</h2>
                 </div>
                 <div class="flex mt-10 mb-5">
-                  <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
+                  <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product</h3>
                   <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
                   <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
                   <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
@@ -100,7 +99,7 @@ export default function Cart({ data, location }) {
                     }
                   `}
                   render={data => 
-                    //todo: filter all selected products
+                    //todo:filter all selected products
                      data.allRestApiApiProducts.edges.map((product, key) =>  { ;
                        if(product.node.endpointId === productId) {
                          console.log("Matched: ", product);
@@ -123,7 +122,7 @@ export default function Cart({ data, location }) {
                 <div class="flex justify-between mt-10 mb-5">
                   <span class="font-semibold text-sm uppercase">Items 3</span>
                   <span class="font-semibold text-sm">590$</span>
-                  <span class="px-3 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  <span class="px-3 inline-flex text-md leading-5 rounded-full bg-green-100 text-green-800">
                     Paid
                   </span>
                 </div>

@@ -5,12 +5,12 @@ export default function CartProduct({ data }) {
   return (
       <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
           <div class="flex w-2/5"> 
-            <div class="w-20">
-              <img class="h-24" src={card.image.high} alt="" />
+            <div class="w-40">
+              <img class="h-24 object-cover" src={card.image.high} alt="" />
             </div>
             <div class="flex flex-col justify-between ml-4 flex-grow">
               <span class="font-bold text-sm">{card.name}</span>
-              <span class="text-red-500 text-xs">Apple</span>
+              <span class="text-gray-600 text-xs">{card.description}</span>
               <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
             </div>
           </div>

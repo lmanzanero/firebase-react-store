@@ -3,6 +3,7 @@ import { graphql, StaticQuery } from "gatsby"
 import { navigate } from "gatsby"
 import Layout from '../components/layouts/layout'
 import CartProduct from '../components/cart/CartProduct'; 
+import CartTabs from '../components/cart/CartTabs';
 
 export default function Cart({ data, location }) {   
   const productId = location.state.productId; 
@@ -117,25 +118,16 @@ export default function Cart({ data, location }) {
                 </a>
               </div>
 
-              <div id="summary" class="w-1/3 px-8 py-10 bg-gray-100">
-                <h1 class="font-semibold text-2xl border-b pb-8">Order Details</h1>
-                <div class="flex justify-between mt-10 mb-5">
-                  <span class="font-semibold text-sm uppercase">Items 3</span>
-                  <span class="font-semibold text-sm">590$</span>
-                  <span class="px-3 inline-flex text-md leading-5 rounded-full bg-green-100 text-green-800">
-                    Paid
-                  </span>
-                </div>
-                {/* <div>
-                  <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                  <select class="block p-2 text-gray-600 w-full text-sm">
-                    <option>Standard shipping - $10.00</option>
-                  </select>
-                </div> */}
-                {/* <div class="py-10">
-                  <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                  <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full"/>
-                </div> */}
+              <div id="summary" class="w-1/2 px-8 py-10 bg-gray-100">
+                <div className="flex flex-row justify-between border-b" >
+                  <h1 class="font-semibold text-2xl pb-8">Order Details</h1>
+                  <div className="flex flex-row pt-1.5">
+                    <h4 className="font-semibold px-1 text-gray-500 text-1xl">Status: </h4>
+                    <span class="h-6 px-3  rounded-full bg-green-100 text-green-800">
+                        Paid
+                    </span>
+                  </div>
+                </div>  
                 <div class="py-3">
                   <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Full Name</label>
                   <input onChange={handleChange} type="name" id="name" name="name" placeholder="Name" class="p-2 text-sm w-full" required/>
@@ -156,8 +148,9 @@ export default function Cart({ data, location }) {
                   </div>
                   <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Checkout {isLoading ? 'loading...' : ''}</button>
                 </div>
+                <br/>
+                <CartTabs/>
               </div>
-
             </div>
           </div>
     </Layout>

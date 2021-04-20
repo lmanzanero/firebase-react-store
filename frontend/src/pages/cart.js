@@ -21,7 +21,7 @@ export default function Cart({ data, location }) {
 
   useEffect(() => { 
       //todo: Expand on this validation with phone verfication
-     if(orderDetails.name === '' || orderDetails.phone === '') {
+     if(orderDetails.name === '' || orderDetails.phone === '' || orderDetails.phone.length < 7 || orderDetails.phone.length > 7) {
        setCanSubmit(true);
      } else {
        setCanSubmit(false);
@@ -136,17 +136,22 @@ export default function Cart({ data, location }) {
                   <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Phone #</label>
                   <input onChange={handleChange} type="phone" id="phone" name="phone" placeholder="+6644584" class="p-2 text-sm w-full" required/>
                 </div>
-                <div class="py-3">
-                  <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo code</label>
-                  <input onChange={handleChange} type="name" id="promo" name="promoCode" placeholder="YES" class="p-2 text-sm w-full"/>
+                <div class="flex flex-row justify-between">
+                  <div className="py-3">
+                    <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo code</label>
+                    <input onChange={handleChange} type="name" id="promo" name="promoCode" placeholder="YES" class="p-2 text-sm w-full"/>
+                  </div>
+                  {/* <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white mt-4 uppercase">Apply</button> */}
                 </div>
-                <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white mt-4 uppercase">Apply</button>
+                {/* <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-5">
+                    View Order
+                </a> */}
                 <div class="border-t mt-8">
                   <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                     <span>Total cost</span>
-                    <span>$600</span>
+                    <span>$5000</span>
                   </div>
-                  <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Checkout {isLoading ? 'loading...' : ''}</button>
+                  <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Create Order{isLoading ? 'loading...' : ''}</button>
                 </div>
                 <br/>
                 <CartTabs/>

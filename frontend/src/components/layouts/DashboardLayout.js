@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Header'
+import { logout } from '../../services/auth';
 
 export default function DashboardLayout({children}) {
   return (
@@ -15,6 +16,7 @@ export default function DashboardLayout({children}) {
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Orders</a>
 
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Customers</a>
+              <button onClick={logout} class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
             </div>
         </div>
         <div className="dashboard-content container mx-auto px-4 py-4">

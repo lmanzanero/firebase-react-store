@@ -29,7 +29,7 @@ export default function Product({ data }) {
             </div>
             <div className="flex pb-4 space-x-3 text-sm font-semibold">
               <div className="flex-auto flex space-x-3">
-                <Link to={`/product/${data.slug}`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white">Buy now</Link>
+                <Link to={`/product/${data.slug}`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white">View Details</Link>
                 <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
               </div>
               <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">

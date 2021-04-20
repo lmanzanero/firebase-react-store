@@ -48,7 +48,9 @@ export default function Cart({ data, location }) {
           if(data.error) { 
             setError(data.error)
           } else { 
-            navigate(`/shop`);
+            navigate(`/view-order`,
+            { state: {productId}
+          });
           }
         })
         .finally(() => setLoading(false))

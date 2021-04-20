@@ -6,7 +6,7 @@ const phoneVerificatonMiddleware = async (req:any, res:any, next:any) => {
     const orderRef = db.collection('orders');
     const allOrdersRes = await orderRef.where('phone', '==', phone).get();
     if (allOrdersRes.empty) {
-      res.status(401).send('No matching Phone Numbers, please verify');
+      res.status(401).send({ message:'No matching Phone Numbers, please verify', error: "phone verification"});
       return;
     }  else {
       //phone has been verified

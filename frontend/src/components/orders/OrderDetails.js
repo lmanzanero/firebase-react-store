@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function OrderDetails() {
+export default function OrderDetails({ data }) { 
   const [orderStatus, setorderStatus] = useState('pending')
   return (
     <div class="container mx-auto mt-10">

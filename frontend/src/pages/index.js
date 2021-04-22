@@ -1,8 +1,4 @@
-import * as React from "react"
-import { Router } from "@reach/router" 
-import PrivateRoute from "../components/PrivateRoute"
-import Dashboard from '../components/dashboard'
-import Login from './login'
+import * as React from "react" 
 import Layout from "../components/layouts/layout"
 import '../styles/global.css'
 

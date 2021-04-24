@@ -1,7 +1,9 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../services/context/CartContext' 
 
 export default function Product({ data }) {  
+  const [cartItems, addProduct] = useContext(CartContext); 
   return (
     <div className="flex flex-col bg-gray-100 overflow-hidden rounded-lg m-2">
         <div className="flex-none h-48 w-full relative ">
@@ -30,7 +32,7 @@ export default function Product({ data }) {
             <div className="flex pb-4 space-x-3 text-sm font-semibold">
               <div className="flex-auto flex space-x-3">
                 <Link to={`/product/${data.slug}`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white">View Details</Link>
-                <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
+                <button onClick={() => addProduct(data.id)} className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
               </div>
               <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">
                 <svg width="20" height="20" fill="currentColor">

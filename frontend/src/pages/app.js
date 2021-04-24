@@ -7,9 +7,10 @@ import IndexPage from "./index"
 import ProductsView from "../components/dashboard/ProductsView"
 import OrdersView from "../components/dashboard/OrdersView"
 import CustomersView from "../components/dashboard/CustomersView"
+import { CartProvider } from "../services/context/CartContext"
 
 const App = () => (
-  <div>  
+  <div>   
     <Router basepath="/app"> 
       <PrivateRoute path="/dashboard" component={Dashboard} /> 
       <PrivateRoute path="/dashboard/products" component={ProductsView} /> 
@@ -17,7 +18,7 @@ const App = () => (
       <PrivateRoute path="/dashboard/customers" component={CustomersView} /> 
       <Login path="/login" /> 
       <IndexPage path="/" />
-    </Router>
+    </Router> 
   </div>
 )
 

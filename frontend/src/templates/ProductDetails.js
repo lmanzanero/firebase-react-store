@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layouts/layout'
+import { CartContext } from '../services/context/CartContext';
 
 export default function ProductDetails({ data }) {  
   const product = data.allRestApiApiProducts.edges[0].node; 
+  //need to wrap product details with cart provider
+  //to accept cart context
+  const cart = useContext(CartContext);  
   return (
     <Layout> 
       <div className="grid grid-cols-2 gap-4 m-8">

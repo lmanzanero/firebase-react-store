@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { graphql, StaticQuery } from "gatsby"
 import { navigate } from "gatsby"
 import Layout from '../components/layouts/layout'
 import CartProduct from '../components/cart/CartProduct'; 
 import CartTabs from '../components/cart/CartTabs';
+import { CartContext } from '../services/context/CartContext';
 
-export default function Cart({ data, location }) {   
+export default function Cart({ data, location, props }) {    
+  console.log(props)
   const productId = location.state.productId; 
   const initalState = {
     productId: productId,

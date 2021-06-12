@@ -1,14 +1,11 @@
-import React from 'react'
-import { CartProvider } from '../../services/context/CartContext'
+import React from 'react' 
 import Header from '../header'
 
 export default function Layout({ children }) {
   return (
-    <div>
-      <CartProvider>
+    <div> 
         <Header/>
-        {children}
-      </CartProvider>
+        {children} 
     </div>
   )
 }

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Router } from "@reach/router" 
+import React from 'react' 
 import Header from '../Header'
 import { logout } from '../../services/auth'; 
 import { Link } from 'gatsby';

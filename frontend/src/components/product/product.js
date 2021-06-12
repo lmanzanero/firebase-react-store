@@ -1,9 +1,17 @@
 import { Link } from 'gatsby'
-import React, { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { CartContext } from '../../services/context/CartContext' 
 
 export default function Product({ data }) {  
   const [cartItems, addProduct] = useContext(CartContext); 
+  const [isDisabled, setIsDisabled ] = useState(false);
+  useEffect(() => {
+    if(cartItems.includes(data.id)){
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [cartItems])
   return (
     <div className="flex flex-col bg-gray-100 overflow-hidden rounded-lg m-2">
         <div className="flex-none h-48 w-full relative ">
@@ -32,9 +40,9 @@ export default function Product({ data }) {
             <div className="flex pb-4 space-x-3 text-sm font-semibold">
               <div className="flex-auto flex space-x-3">
                 <Link to={`/product/${data.slug}`} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white">View Details</Link>
-                <button onClick={() => addProduct(data.id)} className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
+                <button onClick={() => addProduct(data.id)} className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" disabled={isDisabled}>Add to bag</button>
               </div>
-              <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">
+              <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like" >
                 <svg width="20" height="20" fill="currentColor">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
                 </svg>

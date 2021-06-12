@@ -1,14 +1,22 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layouts/layout'
 import { CartContext } from '../services/context/CartContext';
 
 export default function ProductDetails({ data }) {  
   const product = data.allRestApiApiProducts.edges[0].node; 
+  const [isDisabled, setIsDisabled ] = useState(true);
   //need to wrap product details with cart provider
   //to accept cart context
   const [cartItems, addProduct] = useContext(CartContext); 
-   console.log("From Product Details", cartItems);
+  useEffect(() => {
+    console.log(product.id);
+    if(cartItems.includes(product.id)){
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    } 
+  }, [cartItems])
   return (
     <Layout> 
       <div className="grid grid-cols-2 gap-4 m-8">
@@ -71,7 +79,7 @@ export default function ProductDetails({ data }) {
                     <div className="flex space-x-3 mb-4 text-sm font-semibold">
                       <div className="flex-auto flex space-x-3">
                         <Link to={`/cart`} state={{ productId: product.endpointId }} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</Link>
-                        <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button" onClick={() => addProduct(product.endpointId)}>Add to bag</button>
+                        <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" onClick={() => addProduct(product.id)} disabled={isDisabled}>Add to bag</button>
                       </div>
                       <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">
                         <svg width="20" height="20" fill="currentColor">

@@ -6,8 +6,7 @@ import CartProduct from '../components/cart/CartProduct';
 import CartTabs from '../components/cart/CartTabs';
 import { CartContext } from '../services/context/CartContext';
 
-export default function Cart({ data, location, props }) {    
-  console.log(props)
+export default function Cart({ data, location, props }) {     
   const productId = location.state.productId; 
   const initalState = {
     productId: productId,
@@ -15,7 +14,7 @@ export default function Cart({ data, location, props }) {
     phone: '',
     promocode: ''
   }
-
+  const [cartItems, addProduct] = useContext(CartContext); 
   const [orderDetails, setOrderDetails] = useState(initalState);
   const [isLoading, setLoading ] = useState(false);
   const [error, setError ] = useState({});
@@ -29,7 +28,7 @@ export default function Cart({ data, location, props }) {
        setCanSubmit(false);
      } 
      console.log(orderDetails);
-  }, [orderDetails])
+  }, [orderDetails, cartItems])
 
   const handleOrder = async () => {
     setLoading(true);
@@ -104,14 +103,11 @@ export default function Cart({ data, location, props }) {
                     }
                   `}
                   render={data => 
-                    //todo:filter all selected products
-                     data.allRestApiApiProducts.edges.map((product, key) =>  { ;
-                       if(product.node.endpointId === productId) {
-                         console.log("Matched: ", product);
+                    //if product id's are in cart items, display them in the cart
+                     data.allRestApiApiProducts.edges.map((product, key) =>  { 
+                       if(cartItems.includes(product.node.id)) {  
                          return <CartProduct data={product}/>
                        }
-                       
-                      // return product.node === productId ?  <CartProduct key={key}/> : ''
                     })
                   }
                 ></StaticQuery>

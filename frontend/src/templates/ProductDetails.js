@@ -78,7 +78,7 @@ export default function ProductDetails({ data }) {
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     <div className="flex space-x-3 mb-4 text-sm font-semibold">
                       <div className="flex-auto flex space-x-3">
-                        <Link to={`/cart`} state={{ productId: product.endpointId }} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</Link>
+                        <Link to={`/cart`} state={{ productId: product.id }} className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="button" onClick={() => addProduct(product.id)}>Buy now</Link>
                         <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" onClick={() => addProduct(product.id)} disabled={isDisabled}>Add to bag</button>
                       </div>
                       <button className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">

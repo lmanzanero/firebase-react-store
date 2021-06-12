@@ -7,7 +7,8 @@ export default function useShoppingCart() {
     if(products.length === 0) {
       setProducts([...products, productId]);
     } else {
-      setProducts(products => [...products, productId]); 
+      //the filter function ensures that only unique id's are stored for the cart
+      setProducts(products => [...products, productId].filter((v, i, a) => a.indexOf(v) === i)); 
     }
   }
 

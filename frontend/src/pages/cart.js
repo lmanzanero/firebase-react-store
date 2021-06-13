@@ -71,7 +71,7 @@ export default function Cart({ data, location, props }) {
               <div class="w-3/4 bg-gray-50 px-10 py-10">
                 <div class="flex justify-between border-b pb-8">
                   <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                  <h2 class="font-semibold text-2xl">3 Items</h2>
+                  <h2 class="font-semibold text-2xl">{cartItems.length} Items</h2>
                 </div>
                 <div class="flex mt-10 mb-5">
                   <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product</h3>

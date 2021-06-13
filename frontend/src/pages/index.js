@@ -160,7 +160,7 @@ const IndexPage = () => {
                     className="block text-white text-xs font-bold mb-2"
                     htmlFor="full-name"
                   >
-                    Subscribe!
+                    Subscribe for latest promotions!
                   </label>
                   <input
                     type="text"
@@ -175,7 +175,7 @@ const IndexPage = () => {
                           type="button"
                           style={{ transition: "all .15s ease" }}
                         >
-                          Send Message
+                          Subscribe
                   </button>
               </div>
              </div>

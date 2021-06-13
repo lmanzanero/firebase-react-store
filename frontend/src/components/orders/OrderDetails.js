@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
+import { CartTabs } from '../cart/CartTabs'
 
 export default function OrderDetails({ data }) { 
   const [orderStatus, setorderStatus] = useState('pending')
   return (
     <div class="container mx-auto mt-10">
       <div class="flex shadow-md my-10">
-        <div class="w-3/4 bg-gray-50 px-10 py-10">
+        <div class="w-1/2 bg-gray-50 px-10 py-10">
           <div class="flex justify-between border-b pb-8">
-            <h1 class="font-semibold text-2xl">Orders</h1>
-            <span>Reference #: <b>DG-5001-8521-993</b></span>
-            <h2 class="font-semibold text-2xl">3 Items</h2>
+            <h1 class="font-semibold text-2xl">Orders</h1> 
           </div>
           <div class="flex mt-10 mb-5">
             <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product</h3>
@@ -24,45 +23,42 @@ export default function OrderDetails({ data }) {
           </a>
         </div>
 
-        <div id="summary" class="w-1/3 px-8 py-10 bg-gray-100">
+        <div id="summary" className="w-1/2 px-8 py-10 bg-gray-100">
           <div className="flex flex-row justify-between border-b" >
-            <h1 class="font-semibold text-2xl pb-8">Invoice</h1>
-            <div className="flex flex-row pt-1.5">
-              <h4 className="font-semibold px-1 text-gray-500 text-1xl">Status: </h4>
-              <span class="h-6 px-3  rounded-full bg-green-100 text-green-800">
-                  {orderStatus}
-              </span>
-            </div>
+            <h1 className="font-semibold text-2xl pb-8">Order Details</h1> 
           </div>  
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-            <label>Bank Name</label>
-            <span className="text-gray-500" >Belize Bank</span>
+          <div class="flex font-semibold justify-between py-4 text-sm uppercase">
+            <label>Order Date</label>
+            <span className="text-gray-500" >March 11th, 2021</span>
           </div>
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-            <span>Account Name</span>
-            <span className="text-gray-500" >Luis Manzanero</span>
+          <div className="flex font-semibold justify-between py-4 text-sm uppercase">
+            <span>Reference #</span>
+            <span className="text-gray-500" >ZCC1-609-1112-14T1</span>
           </div> 
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase border-b">
-            <span>Account #</span>
-            <span className="text-gray-500" >Belize Bank</span>
+          <div className="flex font-semibold justify-between py-4 text-sm uppercase border-b">
+            <span>Order Status</span>
+            <span className="h-7 px-3 py-1 rounded-full bg-green-100 text-green-800">
+                  {orderStatus}
+            </span>
           </div>  
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+          <div className="flex font-semibold justify-between py-4 text-sm uppercase">
               <span>Tax / Service Fee</span>
               <span className="text-gray-500" >$10</span>
           </div>
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-              <span>Product Cost</span>
+          <div className="flex font-semibold justify-between py-4 text-sm uppercase">
+              <span>Product(s) Cost</span>
               <span className="text-gray-500" >$1000</span>
           </div>
-          <div class="border-t">
-            <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+          <div className="border-t">
+            <div className="flex font-semibold justify-between py-6 text-m uppercase">
               <span>Total cost</span>
               <span className="text-gray-500" >$1010</span>
             </div>
-            <button type="button" class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full" disabled={orderStatus != 'paid' ? true : false}>Confirm Payment</button>
+            <CartTabs color="blue"/>
+            {/* <button type="button" class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full" disabled={orderStatus != 'paid' ? true : false}>Confirm Payment</button>
             <br/>
             <br/>
-            <button type="button" class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Cancel Order</button>
+            <button type="button" class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Cancel Order</button> */}
           </div>
           <br/> 
         </div>

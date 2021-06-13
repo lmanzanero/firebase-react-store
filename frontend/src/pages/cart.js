@@ -121,12 +121,12 @@ export default function Cart({ data, location, props }) {
               <div id="summary" class="w-1/2 px-8 py-10 bg-gray-100">
                 <div className="flex flex-row justify-between border-b" >
                   <h1 class="font-semibold text-2xl pb-8">Order Details</h1>
-                  <div className="flex flex-row pt-1.5">
+                  {/* <div className="flex flex-row pt-1.5">
                     <h4 className="font-semibold px-1 text-gray-500 text-1xl">Status: </h4>
                     <span class="h-6 px-3  rounded-full bg-green-100 text-green-800">
                         Paid
                     </span>
-                  </div>
+                  </div> */}
                 </div>  
                 <div class="py-3">
                   <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Full Name</label>
@@ -146,6 +146,18 @@ export default function Cart({ data, location, props }) {
                 {/* <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-5">
                     View Order
                 </a> */}
+                <div className="flex mt-6">
+                    <label className="flex items-center">
+                      <input type="checkbox" class="form-checkbox"/>
+                      <span class="ml-2">I agree to the <span class="underline">terms and conditions</span></span>
+                    </label>
+                </div>
+                <div className="flex mt-6">
+                    <label className="flex items-center">
+                      <input type="checkbox" class="form-checkbox"/>
+                      <span class="ml-2">I agree to subscribe to recieve <span class="underline"> SMS messages </span> to get notified on orders</span>
+                    </label>
+                </div>
                 <div class="border-t mt-8">
                   <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                     <span>Total cost</span>
@@ -154,7 +166,7 @@ export default function Cart({ data, location, props }) {
                   <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Create Order{isLoading ? 'loading...' : ''}</button>
                 </div>
                 <br/>
-                <CartTabs/>
+                {/* <CartTabs/> */}
               </div>
             </div>
           </div>

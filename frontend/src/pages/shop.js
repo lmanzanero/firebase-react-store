@@ -6,7 +6,7 @@ import Product from '../components/product/product'
 export default function Shop() {  
   return (
     <Layout>
-       <div className="flex flex-wrap justify-center items-center bg-gray-000"> 
+       <div className="flex flex-wrap justify-center items-start bg-gray-000 h-screen"> 
         <StaticQuery
           query={graphql`
             {

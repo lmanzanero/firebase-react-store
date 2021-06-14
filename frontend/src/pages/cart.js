@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { graphql, StaticQuery } from "gatsby"
 import { navigate } from "gatsby"
 import Layout from '../components/layouts/layout'
-import CartProduct from '../components/cart/CartProduct'; 
-import CartTabs from '../components/cart/CartTabs';
+import CartProduct from '../components/cart/CartProduct';  
 import { CartContext } from '../services/context/CartContext';
 
 export default function Cart({ data, location, props }) {     
@@ -164,9 +163,7 @@ export default function Cart({ data, location, props }) {
                     <span>$5000</span>
                   </div>
                   <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Create Order{isLoading ? 'loading...' : ''}</button>
-                </div>
-                <br/>
-                {/* <CartTabs/> */}
+                </div> 
               </div>
             </div>
           </div>

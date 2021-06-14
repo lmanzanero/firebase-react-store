@@ -15,7 +15,7 @@ const getAllOrders = async (req: Request, res: Response) => {
 };
 
 const createOrder = async (req: Request, res: Response) => {
-  const order: Order = req.body;
+  const order: Order = req.body; 
   // todo: Check to see if phone number has been verified, if not, send 401
   // Maybe this can be a middleware
   await db.collection("orders").add({ ...order, createdAt: Date.now() });

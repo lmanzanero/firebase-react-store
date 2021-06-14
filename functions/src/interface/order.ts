@@ -3,6 +3,7 @@ interface Order {
   name: string,
   phone: string,
   promoCode: string,
-  createdAt: string,
+  createdAt: Date,
+  isPaid: boolean,
   status: Status
 }

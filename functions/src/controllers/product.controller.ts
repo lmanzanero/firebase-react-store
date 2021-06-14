@@ -20,7 +20,17 @@ const createProudct = async (req: Request, res: Response ) => {
 }
 
 const getProudctById = async (req: Request, res: Response ) => {
-  res.send("Get Only One Product");
+  const { id } = req.params;
+  try {
+    const product = await db.collection("products").doc(id).get();
+    return res.status(200).json({
+      status: "success",
+      message: "Product Found!",
+      data: product.data() as Product,
+    });
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
 }
 
 const updateProudctById = async (req: Request, res: Response ) => {

@@ -19,10 +19,10 @@ app.patch('/product/:id', authMiddleware, updateProudctById);
 app.delete('/product/:id', authMiddleware, deleteProudctById);
 
 //orders routes
-app.get('/orders', getAllOrders);
+app.get('/orders', authMiddleware, getAllOrders);
 app.post('/order', phoneVerificatonMiddleware, createOrder);
 app.get('/order/:id', getOrderById);
-app.patch('/order/:id', authMiddleware, updateOrderById);
+app.patch('/order/:id', updateOrderById);
 app.delete('/order/:id', authMiddleware, deleteOrderById);
 
 

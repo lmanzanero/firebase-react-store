@@ -5,15 +5,14 @@ import Layout from '../components/layouts/layout'
 import CartProduct from '../components/cart/CartProduct';  
 import { CartContext } from '../services/context/CartContext';
 
-export default function Cart({ data, location, props }) {     
-  const productId = location.state.productId; 
+export default function Cart({ data, location, props }) {    
+  const [cartItems, addProduct] = useContext(CartContext);  
   const initalState = {
-    productId: productId,
+    productId: [...cartItems],
     name: '',
     phone: '',
     promocode: ''
   }
-  const [cartItems, addProduct] = useContext(CartContext); 
   const [orderDetails, setOrderDetails] = useState(initalState);
   const [isLoading, setLoading ] = useState(false);
   const [error, setError ] = useState({});

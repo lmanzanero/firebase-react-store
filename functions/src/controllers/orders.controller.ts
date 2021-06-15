@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../config/firebase";
+import { makeid } from "../utils/utils";
 
 const getAllOrders = async (req: Request, res: Response) => {
   try {
@@ -16,10 +17,18 @@ const getAllOrders = async (req: Request, res: Response) => {
 
 const createOrder = async (req: Request, res: Response) => {
   const order: Order = req.body; 
+  const referenceCode = makeid();
+  const createOrder = {
+      productId: order.productId,
+      name: order.name,
+      phone: order.phone,
+      referenceCode: referenceCode,
+      createdAt: Date.now()
+  }
   // todo: Check to see if phone number has been verified, if not, send 401
   // Maybe this can be a middleware
-  await db.collection("orders").add({ ...order, createdAt: Date.now() });
-  res.status(201).json(order);
+  await db.collection("orders").add(createOrder);
+  res.status(201).json({...createOrder, status: "Success!"});
 };
 
 const getOrderById = async (req: Request, res: Response) => {

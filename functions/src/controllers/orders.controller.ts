@@ -34,12 +34,22 @@ const createOrder = async (req: Request, res: Response) => {
 const getOrderById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const order = await db.collection("orders").doc(id).get();
-    return res.status(200).json({
-      status: "success",
-      message: "Found Order!",
-      data: order.data() as Order,
-    });
+  //gets order from db id
+  // const order = await db.collection("orders").doc(id).get();
+  //gets order using referenceNumber/Code
+  return await db.collection("orders")
+                      .where("referenceCode", "==", id)
+                      .get()
+                      .then((querySnapshot)  => {
+                        if(!querySnapshot.empty) { 
+                          // rest of your code 
+                           res.status(200).json({
+                            status: "success",
+                            message: "Found Order!",
+                            data: querySnapshot.docs[0].data() as Order,
+                          });
+                        }
+                      }) 
   } catch (error) {
     return res.status(500).json(error.message);
   }

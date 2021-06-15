@@ -9,6 +9,7 @@ export default function Cart({ data, location, props }) {
   const [cartItems, addProduct] = useContext(CartContext);  
   const initalState = {
     productId: [...cartItems],
+    referenceNumber: '',
     name: '',
     phone: '',
     promocode: ''
@@ -20,12 +21,12 @@ export default function Cart({ data, location, props }) {
 
   useEffect(() => { 
       //todo: Expand on this validation with phone verfication
-     if(orderDetails.name === '' || orderDetails.phone === '' || orderDetails.phone.length < 7 || orderDetails.phone.length > 7) {
+     if(orderDetails.name === '' || orderDetails.phone === '' || orderDetails.phone?.length < 7 || orderDetails.phone.length > 7) {
        setCanSubmit(true);
      } else {
-       setCanSubmit(false);
+       setCanSubmit(false); 
      } 
-     console.log(orderDetails);
+     console.log(orderDetails, cartItems);
   }, [orderDetails, cartItems])
 
   const handleOrder = async () => {
@@ -42,13 +43,14 @@ export default function Cart({ data, location, props }) {
   };
     await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/order`, requestOptions)
         .then(response => response.json())
-        .then(data => {
-          console.log(data);
+        .then(data => { 
           if(data.error) { 
             setError(data.error)
           } else { 
             navigate(`/view-order`,
-            { state: {productId}
+            { state: {
+              referenceCode : data.referenceCode
+            }
           });
           }
         })

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import useSearchOrder from '../../services/hooks/useSearchOrder';
 
-export default function SearchOrderInput({ refNumber, search, isLoading }) { 
+export default function SearchOrderInput({ isLoading, refNumber, search }) { 
   const [referenceNumber, setReferenceNumber] = useState(refNumber);
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [isDisabled, setIsDisabled] = useState(true) 
 
  function changeHandler (e) {
     e.preventDefault();

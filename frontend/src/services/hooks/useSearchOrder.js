@@ -6,14 +6,22 @@ export default function useSearchOrder(referenceNumber) {
   const [data, setData ] = useState(null);
 
   useEffect(() => {
-    if(!referenceNumber) return
-    setLoading(true);
-    setTimeout(() => {  
-    setLoading(false);
-    setData("hello") 
-    setIsValidRefNum(true); 
-    }, 3000);
+    if(!referenceNumber) return  
   }, [referenceNumber])
 
-  return { loading, isValidRefNum, data }
+  async function searchWithReferenceNumber(){
+     try {
+      console.log("hello search order")
+      setLoading(true);
+      setTimeout(() => {  
+      setLoading(false);
+      setData("hello") 
+      setIsValidRefNum(true);  
+      }, 3000);
+     } catch (error) {
+       
+     }
+  }
+
+  return { loading, isValidRefNum, data, searchWithReferenceNumber }
 }

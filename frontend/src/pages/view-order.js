@@ -6,20 +6,14 @@ import useSearchOrder from '../services/hooks/useSearchOrder';
 
 export default function ViewOrder({location}) { 
   const [ referenceNumber, setreferenceNumber ] = useState(location.state.referenceCode || null);    
-  const { loading, isValidRefNum, data } = useSearchOrder(referenceNumber);  
-  useEffect(() => { 
-     console.log("Location state: ", location.state.referenceCode); 
-     console.log("Search data", data);
-  }, [referenceNumber, isValidRefNum, data])
-  function searchOrder (number) { 
-    console.log("e")
-    setreferenceNumber(number);
-  }
+  const { loading, isValidRefNum, data, searchWithReferenceNumber} = useSearchOrder(referenceNumber);  
+  useEffect(() => {  
+  }, [referenceNumber, isValidRefNum, data]) 
   return (
     <Layout> 
-       <SearchOrderInput isLoading={loading} refNumber={referenceNumber} search={searchOrder} />
-       {/* If search input results in 200 status, then take usere to order details page */}
-       {/* <OrderDetails data={data} /> */}
+      {
+        isValidRefNum ? <OrderDetails data={data}/> :  <SearchOrderInput isLoading={loading} refNumber={referenceNumber} search={searchWithReferenceNumber} />
+      } 
     </Layout>
   )
 }

@@ -14,7 +14,7 @@ export default function useSearchOrder(referenceNumber) {
     try {
     setLoading(true);
        //send referenceNumber values to api
-    const results = await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/order/0AGHQE7O`)
+    const results = await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/order/52C80S4U`)
     const data = await results.json();  
       console.log(data);
       setLoading(false);

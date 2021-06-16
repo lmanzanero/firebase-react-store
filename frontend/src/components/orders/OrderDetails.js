@@ -3,6 +3,7 @@ import { CartTabs } from '../cart/CartTabs'
 
 export default function OrderDetails({ data }) { 
   const [orderStatus, setorderStatus] = useState('pending')
+  const {referenceCode } = data.data;
   return (
     <div class="container mx-auto mt-10">
       <div class="flex shadow-md my-10">
@@ -33,7 +34,7 @@ export default function OrderDetails({ data }) {
           </div>
           <div className="flex font-semibold justify-between py-4 text-sm uppercase">
             <span>Reference #</span>
-            <span className="text-gray-500" >ZCC1-609-1112-14T1</span>
+            <span className="text-gray-500" >{referenceCode}</span>
           </div> 
           <div className="flex font-semibold justify-between py-4 text-sm uppercase border-b">
             <span>Order Status</span>

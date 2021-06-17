@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "https://lmanzanero.github.io/firebase-react-store/",
+  pathPrefix: "/firebase-react-store",
   siteMetadata: {
     siteUrl: `https://lmanzanero.github.io/firebase-react-store/`,
     title: "React Firestore Shopping Cart",

@@ -1,6 +1,8 @@
 import React, { createContext, useState } from 'react'
 import useShoppingCart from '../hooks/useShoppingCart'
 
+//adding default value ensures there are no bugs 
+//while deploying
 const defaultState = { 
   products: [], 
   addProduct:() => {}, 

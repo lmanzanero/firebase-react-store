@@ -3,20 +3,23 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/layouts/layout'
 import { CartContext } from '../services/context/CartContext';
 
-export default function ProductDetails({ data }) {  
+export default function ProductDetails({ data }) { 
+  const {products, addProduct} = useContext(CartContext);  
   const product = data.allRestApiApiProducts.edges[0].node; 
   const [isDisabled, setIsDisabled ] = useState(true);
   //need to wrap product details with cart provider
   //to accept cart context
-  const [cartItems, addProduct] = useContext(CartContext); 
+  console.log(useContext(CartContext));
   useEffect(() => {
+    
     console.log(product.id);
-    if(cartItems.includes(product.id)){
+    console.log(products);
+    if(products?.includes(product.id)){
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     } 
-  }, [cartItems])
+  }, [products])
   return (
     <Layout> 
       <div className="grid grid-cols-2 gap-4 m-8">

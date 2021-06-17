@@ -6,9 +6,9 @@ import CartProduct from '../components/cart/CartProduct';
 import { CartContext } from '../services/context/CartContext';
 
 export default function Cart({ data, location, props }) {    
-  const [cartItems, addProduct] = useContext(CartContext);  
+  const {products, addProduct} = useContext(CartContext);  
   const initalState = {
-    productId: [...cartItems],
+    productId: [...products],
     referenceNumber: '',
     name: '',
     phone: '',
@@ -26,8 +26,8 @@ export default function Cart({ data, location, props }) {
      } else {
        setCanSubmit(false); 
      } 
-     console.log(orderDetails, cartItems);
-  }, [orderDetails, cartItems])
+     console.log(orderDetails, products);
+  }, [orderDetails, products])
 
   const handleOrder = async () => {
     setLoading(true);
@@ -71,7 +71,7 @@ export default function Cart({ data, location, props }) {
               <div class="w-3/4 bg-gray-50 px-10 py-10">
                 <div class="flex justify-between border-b pb-8">
                   <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                  <h2 class="font-semibold text-2xl">{cartItems.length} Items</h2>
+                  <h2 class="font-semibold text-2xl">{products?.length} Items</h2>
                 </div>
                 <div class="flex mt-10 mb-5">
                   <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product</h3>
@@ -105,7 +105,7 @@ export default function Cart({ data, location, props }) {
                   render={data => 
                     //if product id's are in cart items, display them in the cart
                      data.allRestApiApiProducts.edges.map((product, key) =>  { 
-                       if(cartItems.includes(product.node.id)) {  
+                       if(products.includes(product.node.id)) {  
                          return <CartProduct data={product}/>
                        }
                     })

@@ -6,8 +6,7 @@ import Login from "./login"
 import IndexPage from "./index"    
 import ProductsView from "../components/dashboard/ProductsView"
 import OrdersView from "../components/dashboard/OrdersView"
-import CustomersView from "../components/dashboard/CustomersView"
-import { CartProvider } from "../services/context/CartContext"
+import CustomersView from "../components/dashboard/CustomersView" 
 
 const App = () => (
   <div>   

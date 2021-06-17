@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "front-end",
+    siteUrl: `https://lmanzanero.github.io/firebase-react-store/`,
+    title: "React Firestore Shopping Cart",
   },
   plugins: [
     {

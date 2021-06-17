@@ -5,7 +5,7 @@ import SearchOrderInput from '../components/orders/SearchOrderInput'
 import useSearchOrder from '../services/hooks/useSearchOrder';
 
 export default function ViewOrder({location}) { 
-  const [ referenceNumber, setreferenceNumber ] = useState(location.state.referenceCode || null);    
+  const [ referenceNumber, setreferenceNumber ] = useState(location.state?.referenceCode || null);    
   const { loading, isValidRefNum, data, searchWithReferenceNumber} = useSearchOrder(referenceNumber);  
   useEffect(() => {  
   }, [referenceNumber, isValidRefNum, data]) 

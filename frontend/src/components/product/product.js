@@ -3,15 +3,16 @@ import React, { useState, useContext, useEffect } from 'react'
 import { CartContext } from '../../services/context/CartContext' 
 
 export default function Product({ data }) {  
-  const [cartItems, addProduct] = useContext(CartContext); 
+  const {products, addProduct} = useContext(CartContext); 
   const [isDisabled, setIsDisabled ] = useState(false);
   useEffect(() => {
-    if(cartItems.includes(data.id)){
+    console.log("Product: " ,products)
+    if(products?.includes(data.id)){
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
-  }, [cartItems])
+  }, [products])
   return (
     <div className="flex flex-col bg-gray-100 overflow-hidden rounded-lg m-2">
         <div className="flex-none h-48 w-full relative ">

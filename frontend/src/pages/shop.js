@@ -6,7 +6,15 @@ import Product from '../components/product/product'
 export default function Shop() {  
   return (
     <Layout>
-       <div className="flex flex-wrap justify-center items-start bg-gray-000 h-screen"> 
+      {/* Tags Row */}
+      <div className="flex-auto flex justify-center space-x-3 sticky top-0 bg-white">
+        <button className="w-auto my-2 h-9 p-4 flex items-center justify-center rounded-full bg-purple-50 text-purple-700">Latest</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Promotions</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Wedding</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Graduation</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Other</button>
+      </div> 
+       <div className="flex flex-wrap justify-around items-start bg-gray-000 h-screen"> 
         <StaticQuery
           query={graphql`
             {

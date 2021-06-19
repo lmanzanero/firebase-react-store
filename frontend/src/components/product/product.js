@@ -14,11 +14,11 @@ export default function Product({ data }) {
     }
   }, [products])
   return (
-    <div class="py-3 px-4 w-1/3 sm:max-w-xl sm:mx-auto">
+    <div class="m-auto max-w-md mx-auto">
         <div class="bg-white shadow-lg border-gray-100 max-h-80	 border sm:rounded-3xl p-8 flex space-x-8">
           <div class="h-48 w-48 overflow-visible w-1/2">
-          <h2 class="text-base pb-2 font-bold">{data.name}</h2>
-              <img class="rounded-3xl object-cover h-48 w-48 shadow-lg" src={data.image.high}  alt=""/>
+            <h2 class="text-base pb-2 font-bold">{data.name}</h2>
+            <img class="rounded-3xl object-cover h-48 w-48 shadow-lg" src={data.image.high}  alt=""/>
           </div>
             <div class="flex flex-col w-1/2 space-y-4">
               <div class="flex justify-end">
@@ -33,7 +33,7 @@ export default function Product({ data }) {
                 <div className="flex pb-4 space-x-3 text-sm font-semibold">
                   <div className="flex-auto flex space-x-3">
                     <Link to={`/product/${data.slug}`} className="w-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700">Details</Link>
-                      <button onClick={() => addProduct(data.id)} className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" disabled={isDisabled}>Add to bag</button>
+                      <button onClick={() => addProduct(data.id)} className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" disabled={isDisabled}>Add to Cart</button>
                   </div> 
                 </div>
             </div>

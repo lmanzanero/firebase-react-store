@@ -7,7 +7,7 @@ export default function Shop() {
   return (
     <Layout>
       {/* Tags Row */}
-      <div className="flex-auto flex justify-center space-x-3 sticky top-0 bg-white">
+      <div className="flex-auto flex justify-center space-x-3 sticky top-0 bg-white overflow-x-scroll">
         <button className="w-auto my-2 h-9 p-4 flex items-center justify-center rounded-full bg-purple-50 text-purple-700">Latest</button>
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Promotions</button>
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Wedding</button>

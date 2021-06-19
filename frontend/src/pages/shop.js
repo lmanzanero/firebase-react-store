@@ -12,6 +12,12 @@ export default function Shop() {
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Promotions</button>
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Wedding</button>
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Graduation</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Chain</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Ring</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Silver</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Gold</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >earring</button>
+        <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >bracelets</button>
         <button className="w-auto my-2 h-9 p-4 h-9 flex items-center justify-center rounded-full bg-purple-50 text-purple-700 disabled:opacity-50" type="button" >Other</button>
       </div> 
        <div className="flex flex-wrap justify-around items-start bg-gray-000 h-screen"> 

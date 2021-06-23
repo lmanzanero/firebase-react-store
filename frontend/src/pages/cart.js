@@ -34,8 +34,15 @@ export default function Cart({ data, location, props }) {
   }, [orderDetails, products])
 
   useEffect(() => {
-    settotalSum(total);
+    //adds all values for final price
+    settotalSum(total.reduce((a, b) => a + b, 0));
   }, []);
+
+  //gets all price values froms static query
+  const addAllPrices = async (price) => {
+    const value = price.replace(/\$/g, '');  
+    total.push(Number(value)); 
+  }
 
   const handleOrder = async () => {
     setLoading(true);
@@ -189,9 +196,8 @@ export default function Cart({ data, location, props }) {
                      data.allRestApiApiProducts.edges.map((product, key) =>  { 
                        if(products.includes(product.node.id)) {  
                          //add price value to get total price value  
-                         const value = (product.node.price.replace(/\$/g, ''));  
-                         total.push(Number(value)); 
-                         return <CartProduct data={product}/>
+                        addAllPrices(product.node.price);
+                        return <CartProduct data={product}/>
                        }
                     })
                   }
@@ -246,7 +252,7 @@ export default function Cart({ data, location, props }) {
                 <div class="border-t mt-8">
                   <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                     <span>Total cost</span>
-                    <span>${totalSum.reduce((a, b) => a + b, 0)}</span>
+                    <span>${totalSum}</span>
                   </div>
                   <button type="button" onClick={handleOrder} disabled={canSubmit} class="bg-indigo-500 font-semibold hover:bg-indigo-600 disabled:opacity-50  py-3 text-sm text-white uppercase w-full">Create Order{isLoading ? 'loading...' : ''}</button>
                 </div> 

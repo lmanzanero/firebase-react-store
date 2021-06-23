@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { graphql, StaticQuery } from "gatsby"
 import { CartTabs } from '../cart/CartTabs'
 import CartProduct from '../../components/cart/CartProduct'; 
+import { SearchContext } from '../../services/context/SearchContext';
 
-export default function OrderDetails({ data }) { 
+export default function OrderDetails() { 
+  const { data } = useContext(SearchContext); 
   const total = []; 
   const serviceFee = 5;
   const [orderStatus, setorderStatus] = useState('pending')
@@ -13,7 +15,7 @@ export default function OrderDetails({ data }) {
   useEffect(() => {
     //adds all values for final price
     settotalSum(total.reduce((a, b) => a + b, 0));  
-  }, []);
+  }, [data]);
 
   //gets all price values froms static query
   const addAllPrices = async (price) => {

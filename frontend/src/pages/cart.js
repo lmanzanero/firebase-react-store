@@ -4,7 +4,7 @@ import { graphql, StaticQuery } from "gatsby"
 import { navigate } from "gatsby"
 import Layout from '../components/layouts/layout'
 import CartProduct from '../components/cart/CartProduct';  
-import { CartContext } from '../services/context/CartContext';
+import { CartContext } from '../services/context/CartContext'; 
 
 export default function Cart({ data, location, props }) {   
   const total = []; 
@@ -57,27 +57,25 @@ export default function Cart({ data, location, props }) {
       })
   };
   return await fetch(`https://us-central1-nancy-s-jewerly.cloudfunctions.net/api/order`, requestOptions)
-        .then(response => {
-          if(response.status == 401) {
+        .then(response => { 
+          if(response.ok) {
+            return response.json();
+          } else {
             setOpen(true);
+            throw new Error("Please verify number");
           }
-          response.json()
-        })
-        .then(data => { 
-          if(data.error) { 
-            setError(data.error)
-          } else { 
-            navigate(`/view-order`,
+        }).then((data) => {   
+          navigate(`/view-order`,
             { state: {
               referenceCode : data.referenceCode
             }
           });
-          }
-        })
-        .finally(() => setLoading(false))
-        .catch(error => { 
+        }) 
+        .catch(error => {  
           setError(error.message);
-        });
+        }).finally(() => {
+          setLoading(false);
+        })
     }
 
     const handleChange = (e) => { 

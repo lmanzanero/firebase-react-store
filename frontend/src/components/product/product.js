@@ -5,8 +5,7 @@ import { CartContext } from '../../services/context/CartContext'
 export default function Product({ data }) {  
   const {products, addProduct} = useContext(CartContext); 
   const [isDisabled, setIsDisabled ] = useState(false);
-  useEffect(() => {
-    console.log("Product: " ,products)
+  useEffect(() => { 
     if(products?.includes(data.id)){
       setIsDisabled(true);
     } else {

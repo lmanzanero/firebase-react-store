@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const CartTabs = ({ color }) => {
+export const CartTabs = ({ color, data }) => {
   const [openTab, setOpenTab] = React.useState(1);
+  const { name, phone } = data.data; 
   return (
     <>
       <div className="flex flex-wrap">
@@ -74,11 +75,11 @@ export const CartTabs = ({ color }) => {
                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                   <div className="flex font-semibold justify-between py-3 text-sm uppercase">
                     <label>For: </label>
-                    <span className="text-gray-500" >Luis Manzanero</span>
+                    <span className="text-gray-500" >{name}</span>
                   </div>
                   <div className="flex font-semibold justify-between py-3 text-sm uppercase">
                     <label>Send to: </label>
-                    <span className="text-gray-500" >6547879</span>
+                    <span className="text-gray-500" >{phone}</span>
                   </div>
                 </div>
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react' 
 import { SearchContext } from '../../services/context/SearchContext';
 
-export default function SearchOrderInput() { 
+export default function SearchOrderInput({referenceCode}) { 
   const { loading, searchWithReferenceNumber, referenceNumber, setReferenceNumber } = useContext(SearchContext);  
   const [isDisabled, setIsDisabled] = useState(true) 
   
@@ -11,8 +11,11 @@ export default function SearchOrderInput() {
     setReferenceNumber(e.target.value);
   }
 
-  useEffect(() => {   
-    console.log(referenceNumber);
+  useEffect(() => {    
+    //gets state from props and updates context
+    if(referenceCode) {
+      setReferenceNumber(referenceCode)
+    }
     // ? ensure that reference is not null, therefore, not trigger an infinite loop
     if(referenceNumber?.length >= 6) {
       setIsDisabled(false);

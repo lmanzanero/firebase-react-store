@@ -12,7 +12,7 @@ export default function OrderSearchView({referenceNumber}) {
   return (
     <Layout> 
       {
-        isValidRefNum ? <OrderDetails /> :  <SearchOrderInput />
+        isValidRefNum ? <OrderDetails /> :  <SearchOrderInput referenceCode={referenceNumber} />
       } 
     </Layout>
   )
